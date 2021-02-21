@@ -154,7 +154,7 @@ async function process(request: request.SuperAgentStatic) : Promise<void> {
                 )
                 .catch(err=>{throw err});
     
-                console.debug(`Total vuln count is ${totalVulnCount}`);
+                console.info(`Total vuln count is ${totalVulnCount}`);
 
                 let severity = {};
 
@@ -269,7 +269,7 @@ async function processSelectVulnerabilities(request: request.SuperAgentStatic, r
 }
 
 async function getScanSummary(request: request.SuperAgentStatic, scanId:string) : Promise<any> {
-    console.debug(`Loading summary for scan ${scanId}`);
+    console.info(`Loading summary for scan ${scanId}`);
     return request.get(`/api/v3/scans/${scanId}/summary`)
     .then(resp=>{
         const scanSummary = resp.body;
@@ -279,7 +279,7 @@ async function getScanSummary(request: request.SuperAgentStatic, scanId:string) 
 }
 
 async function getReleaseDetails(request: request.SuperAgentStatic, releaseId:string) : Promise<any> {
-    console.debug(`Loading details for release ${releaseId}`);
+    console.info(`Loading details for release ${releaseId}`);
     return request.get(`/api/v3/releases/${releaseId}`)
         .then(resp=>{
             const releaseDetails = resp.body;
@@ -289,7 +289,7 @@ async function getReleaseDetails(request: request.SuperAgentStatic, releaseId:st
 }
 
 async function processVulnerability(request: request.SuperAgentStatic, releaseId:string, vuln: any) : Promise<void> {
-    console.debug(`Loading details for vulnerability ${vuln.vulnId}`);
+    console.info(`Loading details for vulnerability ${vuln.vulnId}`);
     return request.get(`/api/v3/releases/${releaseId}/vulnerabilities/${vuln.vulnId}/details`)
         .use(throttle10perSec.plugin())
         .then(resp=>{

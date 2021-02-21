@@ -24458,7 +24458,7 @@ function process(request) {
                     currentScanSummary = res;
                 })
                     .catch(err => { throw err; });
-                console.debug(`Total vuln count is ${totalVulnCount}`);
+                console.info(`Total vuln count is ${totalVulnCount}`);
                 let severity = {};
                 if (totalVulnCount <= 1000) {
                     severity = {
@@ -24559,7 +24559,7 @@ function processSelectVulnerabilities(request, releaseId, offset, severity) {
 }
 function getScanSummary(request, scanId) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.debug(`Loading summary for scan ${scanId}`);
+        console.info(`Loading summary for scan ${scanId}`);
         return request.get(`/api/v3/scans/${scanId}/summary`)
             .then(resp => {
             const scanSummary = resp.body;
@@ -24570,7 +24570,7 @@ function getScanSummary(request, scanId) {
 }
 function getReleaseDetails(request, releaseId) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.debug(`Loading details for release ${releaseId}`);
+        console.info(`Loading details for release ${releaseId}`);
         return request.get(`/api/v3/releases/${releaseId}`)
             .then(resp => {
             const releaseDetails = resp.body;
@@ -24581,7 +24581,7 @@ function getReleaseDetails(request, releaseId) {
 }
 function processVulnerability(request, releaseId, vuln) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.debug(`Loading details for vulnerability ${vuln.vulnId}`);
+        console.info(`Loading details for vulnerability ${vuln.vulnId}`);
         return request.get(`/api/v3/releases/${releaseId}/vulnerabilities/${vuln.vulnId}/details`)
             .use(throttle10perSec.plugin())
             .then(resp => {
