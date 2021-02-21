@@ -122,10 +122,14 @@ function createAgent(apiBaseUrl:string, tokenResponseBody:any) : request.SuperAg
 }
 
 async function process(request: request.SuperAgentStatic) : Promise<void> {
+ 
+    console.info('processing release details');
+ 
     const releaseId = getReleaseId();
 
     const releaseDetails = getReleaseDetails(request, releaseId);
-
+    console.info('got release details');
+ 
     releaseDetails.then(
         resp=>{
             const details = resp;
