@@ -130,7 +130,7 @@ async function process(request: request.SuperAgentStatic) : Promise<void> {
     
     console.info('calling get release details');
  
-   getReleaseDetails(request, releaseId).then(
+   await getReleaseDetails(request, releaseId).then(
         resp=>{
             
             console.info("response: " , resp);
@@ -282,6 +282,7 @@ async function getReleaseDetails(request: request.SuperAgentStatic, releaseId:st
     console.info(`Loading details for release ${releaseId}`);
     return request.get(`/api/v3/releases/${releaseId}`)
         .then(resp=>{
+            console.info('response',resp)
             const releaseDetails = resp.body;
             return releaseDetails;
         })

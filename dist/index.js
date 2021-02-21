@@ -24442,7 +24442,7 @@ function process(request) {
         console.info('processing release details');
         const releaseId = getReleaseId();
         console.info('calling get release details');
-        getReleaseDetails(request, releaseId).then(resp => {
+        yield getReleaseDetails(request, releaseId).then(resp => {
             console.info("response: ", resp);
             const details = resp;
             let status = details.staticAnalysisStatusType;
@@ -24573,6 +24573,7 @@ function getReleaseDetails(request, releaseId) {
         console.info(`Loading details for release ${releaseId}`);
         return request.get(`/api/v3/releases/${releaseId}`)
             .then(resp => {
+            console.info('response', resp);
             const releaseDetails = resp.body;
             return releaseDetails;
         })
