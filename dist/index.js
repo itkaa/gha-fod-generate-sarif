@@ -24441,9 +24441,8 @@ function process(request) {
     return __awaiter(this, void 0, void 0, function* () {
         console.info('processing release details');
         const releaseId = getReleaseId();
-        const releaseDetails = getReleaseDetails(request, releaseId);
-        console.info('got release details');
-        releaseDetails.then(resp => {
+        console.info('calling get release details');
+        getReleaseDetails(request, releaseId).then(resp => {
             console.info("response: ", resp);
             const details = resp;
             let status = details.staticAnalysisStatusType;

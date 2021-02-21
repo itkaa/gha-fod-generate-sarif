@@ -127,10 +127,10 @@ async function process(request: request.SuperAgentStatic) : Promise<void> {
  
     const releaseId = getReleaseId();
 
-    const releaseDetails = getReleaseDetails(request, releaseId);
-    console.info('got release details');
+    
+    console.info('calling get release details');
  
-    releaseDetails.then(
+   getReleaseDetails(request, releaseId).then(
         resp=>{
             
             console.info("response: " , resp);
