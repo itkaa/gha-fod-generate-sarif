@@ -137,6 +137,7 @@ async function process(request: request.SuperAgentStatic) : Promise<void> {
             let highCount = details.high;
             let criticalCount = details.critical;
 
+            console.info('status is' + status + ' - ' + suspended);
             if (status == 'Completed' && !suspended) {
 
                 const scanSummary = getScanSummary(request, details.currentStaticScanId);
