@@ -24444,6 +24444,7 @@ function process(request) {
         const releaseDetails = getReleaseDetails(request, releaseId);
         console.info('got release details');
         releaseDetails.then(resp => {
+            console.info("response: ", resp);
             const details = resp;
             let status = details.staticAnalysisStatusType;
             let suspended = details.suspended;

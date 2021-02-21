@@ -132,6 +132,8 @@ async function process(request: request.SuperAgentStatic) : Promise<void> {
  
     releaseDetails.then(
         resp=>{
+            
+            console.info("response: " , resp);
             const details = resp;
             
             let status = details.staticAnalysisStatusType;
